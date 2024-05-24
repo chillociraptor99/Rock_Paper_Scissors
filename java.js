@@ -10,7 +10,7 @@ let round = 0;                  // Round, set to 0 at game start
 function playGame(rnd) {
     do {
         // Generate random whole number 0-2 and assign it to a valid choice
-        function getComputerChoice(cNum) {
+        function getComputerChoice() {
             computerCnum = Math.floor(Math.random () * 3);
             if (computerCnum === 0) {
                 computerChoice = "ROCK";
@@ -79,7 +79,7 @@ function playGame(rnd) {
         playRound();
 
         // Score the round as it ends
-        function scoreRound(int) {
+        function scoreRound() {
             if (roundScore === 0) {
                 ++computerScore;
             } else if (roundScore === 1) {
@@ -105,7 +105,10 @@ function playGame(rnd) {
             console.log("Game over! Your final score was " + playerScore + ". The computer's final score was " + computerScore + ".");
             if (playerScore > computerScore) {
                 console.log("You won!");
-            } else console.log("You lost.");
+            } else if (playerScore === computerScore) {
+                console.log("You tied.");
+            }
+             else console.log("You lost.");
         }
     }
 
