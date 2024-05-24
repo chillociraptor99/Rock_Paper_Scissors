@@ -1,7 +1,6 @@
 let computerChoice = "nothing"; // Computer's choice
 let playerChoice = "nothing";   // Player's choice
 let computerCnum = 0;           // Player's choice as a number
-let playerCnum = 0;             // Computer's choice as a number
 let playerScore = 0;            // Player's number of wins
 let computerScore = 0;          // Computer's number of wins
 let roundScore = 0;             // Who won the round, 0 for PC, 1 for player
