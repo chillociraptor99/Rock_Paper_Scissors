@@ -21,3 +21,16 @@ function getComputerChoice(cNum) {
 
 getComputerChoice();
 
+// Get player's choice via prompt 
+function getPlayerChoice(pChoice) {
+    pChoice = window.prompt("Rock, Paper, Scissors?");
+    playerChoice = pChoice.toUpperCase();
+    console.log(playerChoice);
+}
+
+getPlayerChoice();
+
+// Compare player choice to computer choice
+function playRound(humanChoice, computerChoice) {
+    
+}
