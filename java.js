@@ -7,17 +7,27 @@ let roundScore = 0;             // Who won the round, 0 for PC, 1 for player
 let round = 0;                  // Set starting round
 const btnsDiv = document.getElementById("rpsButtons");
 const mainDiv = document.getElementById("mainDiv");
+
+// Create game related divs
 const scoreboard = document.createElement("div");
+scoreboard.setAttribute("id", "scoreboard");
+const resultContainer = document.createElement("div");
+mainDiv.appendChild(resultContainer);
+resultContainer.setAttribute("id", "resultContainer");
 const playerSelection = document.createElement("div");
-rpsButtons.appendChild(playerSelection);
+resultContainer.appendChild(playerSelection);
 const computerSelection = document.createElement("div");
-rpsButtons.appendChild(computerSelection);
+resultContainer.appendChild(computerSelection);
 const roundResult = document.createElement("div");
-rpsButtons.appendChild(roundResult);
+resultContainer.appendChild(roundResult);
+mainDiv.appendChild(scoreboard);
+const finalScore = document.createElement("div");
+finalScore.setAttribute("id", "finalScore");
+mainDiv.appendChild(finalScore);
 
 // Get player's choice via button 
 btnsDiv.addEventListener("click", function(e) {
-    if (e.target.id != "") {
+    if (e.target.id != "" && e.target.id != "rpsButtons") {
     playerChoice = e.target.id;
     playerSelection.textContent = "You chose " + playerChoice + ".";
     round++;
@@ -26,11 +36,7 @@ btnsDiv.addEventListener("click", function(e) {
     } 
 });
 
-if (round = 1) {
-    mainDiv.appendChild(scoreboard);
-    scoreboard.textContent = "Player: " + playerScore + " vs. Computer: " + computerScore;
-    }
-
+// Game logic
 function playGame() {
     getComputerChoice();
     // Generate random whole number 0-2 and assign it to a valid choice
@@ -51,12 +57,16 @@ function playGame() {
         roundResult.textContent = "You win the round!";
         playerScore++;
         scoreboard.textContent = "Player: " + playerScore + " vs. Computer: " + computerScore;
+        scoreboard.style.borderRadius = "8px";
+        scoreboard.style.padding = "6px";
     }
     // Computer win condition
     function computerWin(winCondition) {
         roundResult.textContent = "You lost the round!";
         computerScore++;
         scoreboard.textContent = "Player: " + playerScore + " vs. Computer: " + computerScore;
+        scoreboard.style.borderRadius = "8px";
+        scoreboard.style.padding = "6px";   
     }
     // Compare player choice to computer choice
     function playRound(pChoice, cChoice) {
@@ -83,12 +93,13 @@ function playGame() {
 function gameOver() {
     if ((playerScore === 5) || (computerScore === 5)) {
         rpsButtons.remove(); 
+        finalScore.style.padding = "6px";  
         if (playerScore < computerScore) {
-            scoreboard.textContent = "Player: " + playerScore + " vs. Computer: " + computerScore + " || Sorry, you lost!";
+            finalScore.textContent = "You lose!";
         } else if (playerScore > computerScore) {
-            scoreboard.textContent = "Player: " + playerScore + " vs. Computer: " + computerScore + " || Wow, you won!";
+            finalScore.textContent = "You win!";
         } else {
-            scoreboard.textContent = "Player: " + playerScore + " vs. Computer: " + computerScore + " || Looks like a tie! You both win this time.";
+            finalScore.textContent = "It's a tie.";
         }
     }
 }
