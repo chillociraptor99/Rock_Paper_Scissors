@@ -1,0 +1,67 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #62bdb1;
+    font-family: Roboto, sans-serif;
+}
+
+#rpsButtons {
+    display: flex;
+    width: 500px;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+#scoreboard {
+    display: flex;
+    background-color: #4da095;
+    font-weight: 700;
+    color: #1d3a36;
+    align-items: center;
+    justify-content: center;
+}
+
+#resultContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    color: #fff;
+    gap: 15px;
+}
+
+#finalScore {
+    display: flex;
+    font-size: 16px;
+    background-color: #224d47;
+    margin: 10px;
+    font-weight: 700;
+    color: #ffffff;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: 6px;
+}
+
+button {
+    font-family: Roboto, sans-serif;
+    border: none;
+    border-radius: 8px;
+    background: #4da095;
+    padding: 10px;
+    color: #fff;
+    height: 50px;
+    width: 50px;
+    font-size: 20px;
+}
+
+button:hover {
+    font-family: Roboto, sans-serif;
+    border: none;
+    border-radius: 8px;
+    background: #3b7c74;
+    padding: 10px;
+    color: #fff;
+}
