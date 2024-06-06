@@ -1,10 +1,9 @@
 let computerChoice = "nothing"; // Computer's choice
 let playerChoice = "nothing";   // Player's choice
 let computerCnum = 0;           // Player's choice as a number
-let playerScore = 0;            // Player's number of wins
+let playerScore = 5;            // Player's number of wins
 let computerScore = 0;          // Computer's number of wins
 let roundScore = 0;             // Who won the round, 0 for PC, 1 for player
-let round = 0;                  // Set starting round
 const btnsDiv = document.getElementById("rpsButtons");
 const mainDiv = document.getElementById("mainDiv");
 
@@ -30,8 +29,6 @@ btnsDiv.addEventListener("click", function(e) {
     if (e.target.id != "" && e.target.id != "rpsButtons") {
     playerChoice = e.target.id;
     playerSelection.textContent = "You chose " + playerChoice + ".";
-    round++;
-    console.log(round);
     playGame();
     } 
 });
@@ -70,17 +67,13 @@ function playGame() {
     }
     // Compare player choice to computer choice
     function playRound(pChoice, cChoice) {
-        if (computerChoice === "rock" && playerChoice === "paper") {
+        if (computerChoice === "rock" && playerChoice === "paper" || 
+        computerChoice === "paper" && playerChoice === "scissors" || 
+        computerChoice === "scissors" && playerChoice === "rock") {
             playerWin();
-        } else if (computerChoice === "paper" && playerChoice === "scissors") {
-            playerWin();
-        } else if (computerChoice === "scissors" && playerChoice === "rock") {
-            playerWin();
-        } else if (computerChoice === "rock" && playerChoice === "scissors") {
-            computerWin();
-        } else if (computerChoice === "paper" && playerChoice === "rock") {
-            computerWin();
-        } else if (computerChoice === "scissors" && playerChoice === "paper") {
+        } else if (computerChoice === "rock" && playerChoice === "scissors" || 
+        computerChoice === "paper" && playerChoice === "rock" ||
+        computerChoice === "scissors" && playerChoice === "paper") {
             computerWin();
         } else if (computerChoice === playerChoice) {
             roundResult.textContent = "A tie. No one wins.";
@@ -93,7 +86,11 @@ function playGame() {
 function gameOver() {
     if ((playerScore === 5) || (computerScore === 5)) {
         rpsButtons.remove(); 
-        finalScore.style.padding = "6px";  
+        finalScore.style.padding = "6px";
+        const restartBtn = document.createElement("button");
+        restartBtn.textContent = "Play again";
+        mainDiv.appendChild(restartBtn);
+        restartBtn.setAttribute("id", "restartBtn");
         if (playerScore < computerScore) {
             finalScore.textContent = "You lose!";
         } else if (playerScore > computerScore) {
